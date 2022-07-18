@@ -7,8 +7,11 @@ import requests.exceptions
 from urllib.parse import urlsplit
 from collections import deque
 import re
-from keys import *
-
+import os
+# from keys import *
+API_KEY_WEATHER = passwordvalue = os.getenv("API_KEY_WEATHER")
+BASE_URL_WEATHER = passwordvalue = os.getenv("BASE_URL_WEATHER")
+CLIENT_TOKEN_DISCORD = passwordvalue = os.getenv("CLIENT_TOKEN_DISCORD")
 
 class MyClient(discord.Client):
     async def on_ready(self):
