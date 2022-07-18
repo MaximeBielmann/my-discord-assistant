@@ -175,4 +175,4 @@ intents.message_content = True
 
 client = MyClient(intents=intents)
 
-client.run('OTk1MzY5NjQyMjQxNTY4ODM5.GIuwID.4Y3XnSjeXg619bkzPjsjia30BckzeSttENv_BY')
+client.run(CLIENT_TOKEN_DISCORD)
