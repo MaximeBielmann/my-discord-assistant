@@ -23,21 +23,22 @@ class MyClient(discord.Client):
         if message.author.id == self.user.id:
             return
 
+        # THIS IS THE HELP MESSAGE WITH ALL AVAILABLE COMMANDS
         if message.content.startswith('!help'):
             if message.channel.name == "general":
                 embed = discord.Embed(title="Help on Bot", description="Some useful commands")
-                embed.add_field(name="!meteo + cityname", value="Get the current weather at this city")
+                embed.add_field(name="!meteo cityname", value="Get the current weather at this city")
                 embed.add_field(name="!chifoumi", value="Start a Rock Paper Scissors game")
-                embed.add_field(name="!email + url", value="search for emails adress on the website")
+                embed.add_field(name="!email url", value="search for emails adress on the website")
 
                 await message.channel.send(content=None, embed=embed)
 
         # THIS IS FOR DELETE ALL MESSAGE IN THE CHANNEL WHERE WE CALL !CLEAR
         if message.content.startswith('!clear'):
-            if str(message.author) == "Maxime#1356":
+            if str(message.author) == "Ypo#1356":
                 await message.channel.purge()
 
-
+        # THIS IS FOR GETTING EMAILS FROM A WEBSITE
         if message.content.startswith('!email'):
             input_email = message.content.strip('!email ')
 
@@ -96,6 +97,7 @@ class MyClient(discord.Client):
             for mail in emails:
                 await message.channel.send(f"I found this email : {mail}")
 
+        # THIS IS FOR GETTING THE CURRENT WEATHER IN A CITY
         if message.content.startswith('!meteo'):
             city = message.content.strip('!meteo ')
             if len(city) < 1:
@@ -116,7 +118,7 @@ class MyClient(discord.Client):
                 else:
                     await message.channel.send("Heu, c'est une ville ça ?")
 
-
+        # THIS IS FOR STARTING A CHIFOUMI
         if message.content.startswith('!chifoumi'):
             user_wins = 0
             computer_wins = 0
@@ -167,7 +169,6 @@ class MyClient(discord.Client):
                     computer_wins +=1
                     await message.channel.send(f"LOOSE ! Computer pick {computer_pick} ! SCORE : {message.author.name} {user_wins} - {computer_wins} THE MACHINA")
                     continue
-
 
         if message.content.startswith('$hello'):
             await message.channel.send('Hello World!')
